@@ -13,6 +13,7 @@ import nodeResolve from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import alias from '@rollup/plugin-alias';
 import postcss from 'rollup-plugin-postcss';
+import postcssImport from 'postcss-import';
 import gzipSize from 'gzip-size';
 import brotliSize from 'brotli-size';
 import prettyBytes from 'pretty-bytes';
@@ -521,6 +522,7 @@ function createConfig(options, entry, format, writeMeta) {
 					postcss({
 						plugins: [
 							autoprefixer(),
+							postcssImport(),
 							options.compress !== false &&
 								cssnano({
 									preset: 'default',
